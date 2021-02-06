@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node 12",
+  "compilerOptions": {
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "module": "ESNext",
+    "target": "ESNext",
+    "declaration": true,
+    "strict": true,
+    "allowJs": true,
+    "noImplicitAny": false,
+    "jsx": "react",
+    "rootDir": "src",
+    "outDir": "build",
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  }
+}
