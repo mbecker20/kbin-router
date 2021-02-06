@@ -1,0 +1,31 @@
+{
+  "name": "kbin-router",
+  "version": "1.0.0",
+  "description": "a react router",
+  "main": "index.js",
+  "scripts": {
+    "publish-package": "tsc && npm publish",
+    "build": "tsc",
+    "gen-docs": "typedoc src/index.ts --readme none --name readme.md --plugin typedoc-plugin-markdown --namedAnchors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbecker20/kbin-router.git"
+  },
+  "author": "mbecker20",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbecker20/kbin-router/issues"
+  },
+  "homepage": "https://github.com/mbecker20/kbin-router#readme",
+  "dependencies": {
+    "kbin-state": "^1.0.1",
+    "react": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.1",
+    "typedoc": "^0.20.21",
+    "typedoc-plugin-markdown": "^3.4.5",
+    "typescript": "^4.1.3"
+  }
+}

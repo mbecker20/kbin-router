@@ -1,6 +1,6 @@
 import React, { Fragment, ReactNode, useEffect } from "react"
-import { stringIn, useReRender } from "redo-state"
-import { genUpdateID, getShortName, getFirstPathStar } from "../helpers"
+import { stringIn, useReRender, genUpdateID } from "kbin-state"
+import { getShortName, getFirstPathStar } from "./helpers"
 import { Router } from "./types"
 
 const TITLE = 'monitor'
