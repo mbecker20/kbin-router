@@ -2,7 +2,7 @@
   "name": "kbin-router",
   "version": "1.0.0",
   "description": "a react router",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "publish-package": "tsc && npm publish",
     "build": "tsc",
