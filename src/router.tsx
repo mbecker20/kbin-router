@@ -36,59 +36,83 @@ function createRouter() {
 
   function navigate(path: string) {
     if (router.path !== path) {
-      router.path = path
+      if (router.routes[path]) {
+        router.path = path
+      } else if (router.routes[getFirstPathStar(path)]) {
+        router.path = getFirstPathStar(path).slice(0, path.length - 2)
+      } else {
+        router.path = '/'
+      }
       window.dispatchEvent(new Event('route_update'))
       const id = genUpdateID(0)
-      const addTitle = getShortName(path)
+      const addTitle = getShortName(router.path)
       const title = addTitle.length > 1 ? `${TITLE} - ${addTitle}` : TITLE
       window.history.pushState(
         { id },
         title,
-        path
+        router.path
       )
       document.title = title
     }
   }
 
   function replaceNavigate(path: string) {
-    router.path = path
+    if (router.routes[path]) {
+      router.path = path
+    } else if (router.routes[getFirstPathStar(path)]) {
+      router.path = getFirstPathStar(path).slice(0, path.length - 2)
+    } else {
+      router.path = '/'
+    }
     window.dispatchEvent(new Event('route_update'))
     const id = genUpdateID(0)
-    const addTitle = getShortName(path)
+    const addTitle = getShortName(router.path)
     const title = addTitle.length > 1 ? `${TITLE} - ${addTitle}` : TITLE
     window.history.replaceState(
       { id },
       title,
-      path
+      router.path
     )
     document.title = title
   }
 
   function softNavigate(path: string) {
     if (router.path !== path) {
-      router.path = path
+      if (router.routes[path]) {
+        router.path = path
+      } else if (router.routes[getFirstPathStar(path)]) {
+        router.path = getFirstPathStar(path).slice(0, path.length - 2)
+      } else {
+        router.path = '/'
+      }
       const id = genUpdateID(0)
-      const addTitle = getShortName(path)
+      const addTitle = getShortName(router.path)
       const title = addTitle.length > 0 ? `${TITLE} - ${addTitle}` : TITLE
       window.history.pushState(
         { id },
         title,
-        path
+        router.path
       )
       document.title = title
     }
   }
 
   function softReplaceNavigate(path: string) {
-    router.path = path
+    if (router.routes[path]) {
+      router.path = path
+    } else if (router.routes[getFirstPathStar(path)]) {
+      router.path = getFirstPathStar(path).slice(0, path.length - 2)
+    } else {
+      router.path = '/'
+    }
     window.dispatchEvent(new Event('route_update'))
     const id = genUpdateID(0)
-    const addTitle = getShortName(path)
+    const addTitle = getShortName(router.path)
     const title = addTitle.length > 1 ? `${TITLE} - ${addTitle}` : TITLE
     window.history.replaceState(
       { id },
       title,
-      path
+      router.path
     )
     document.title = title
   }

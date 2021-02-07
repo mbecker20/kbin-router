@@ -11,6 +11,10 @@ export function getFirstPathStar(path: string) {
   }
 }
 
+export function removeTheStar(path: string) {
+  return path.slice(0, path.length - 2)
+}
+
 export function getShortName(path: string) {
   if (path.length > 0 && path !== '/') {
     if (path[path.length - 1] === '/') {
