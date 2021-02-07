@@ -39,7 +39,8 @@ function createRouter() {
       if (router.routes[path]) {
         router.path = path
       } else if (router.routes[getFirstPathStar(path)]) {
-        router.path = getFirstPathStar(path).slice(0, path.length - 2)
+        router.path = getFirstPathStar(path)
+        router.path = router.path.slice(0, router.path.length - 2)
       } else {
         router.path = '/'
       }
@@ -60,7 +61,8 @@ function createRouter() {
     if (router.routes[path]) {
       router.path = path
     } else if (router.routes[getFirstPathStar(path)]) {
-      router.path = getFirstPathStar(path).slice(0, path.length - 2)
+      router.path = getFirstPathStar(path)
+      router.path = router.path.slice(0, router.path.length - 2)
     } else {
       router.path = '/'
     }
@@ -81,7 +83,8 @@ function createRouter() {
       if (router.routes[path]) {
         router.path = path
       } else if (router.routes[getFirstPathStar(path)]) {
-        router.path = getFirstPathStar(path).slice(0, path.length - 2)
+        router.path = getFirstPathStar(path)
+        router.path = router.path.slice(0, router.path.length - 2)
       } else {
         router.path = '/'
       }
@@ -101,7 +104,8 @@ function createRouter() {
     if (router.routes[path]) {
       router.path = path
     } else if (router.routes[getFirstPathStar(path)]) {
-      router.path = getFirstPathStar(path).slice(0, path.length - 2)
+      router.path = getFirstPathStar(path)
+      router.path = router.path.slice(0, router.path.length - 2)
     } else {
       router.path = '/'
     }
