@@ -34,6 +34,16 @@ function createRouter() {
     })
   }
 
+  function addObjectRoutesByName(
+    rootPath: string,
+    obj: { [id: string]: { name: string } },
+    component: (id: string) => ReactNode
+  ) {
+    Object.keys(obj).forEach(id => {
+      addRoute(rootPath + obj[id].name, component(id))
+    })
+  }
+
   function navigate(path: string) {
     if (router.path !== path) {
       if (router.routes[path]) {
@@ -166,6 +176,7 @@ function createRouter() {
   return {
     addRoute,
     addRoutes,
+    addObjectRoutesByName,
     removeRoute,
     navigate,
     replaceNavigate,
