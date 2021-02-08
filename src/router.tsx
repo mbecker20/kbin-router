@@ -145,6 +145,12 @@ function createRouter() {
     softReplaceNavigate(router.path)
   }
 
+  function removeAllRoutes() {
+    Object.keys(router.routes).forEach(path => {
+      removeRoute(path)
+    })
+  }
+
   function getPath() {
     return router.path
   }
@@ -178,6 +184,7 @@ function createRouter() {
     addRoutes,
     addObjectRoutesByName,
     removeRoute,
+    removeAllRoutes,
     navigate,
     replaceNavigate,
     softNavigate,
