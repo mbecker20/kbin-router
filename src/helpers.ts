@@ -12,7 +12,7 @@ export function getFirstPathStar(path: string) {
 }
 
 export function removeTheStar(path: string) {
-  return path.slice(0, path.length - 2)
+  return path.slice(0, path.length > 2 ? path.length - 2 : path.length - 1)
 }
 
 export function getShortName(path: string) {
