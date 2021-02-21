@@ -44,6 +44,17 @@ function createRouter() {
     })
   }
 
+  function addObjectSubroutesByName(
+    rootPath: string,
+    obj: { [id: string]: { name: string } },
+    subroute: string,
+    component: (id: string) => ReactNode
+  ) {
+    Object.keys(obj).forEach(id => {
+      addRoute(`${rootPath}${obj[id].name}/${subroute}`, component(id))
+    })
+  }
+
   function navigate(path: string) {
     if (router.path !== path) {
       if (router.routes[path]) {
@@ -184,6 +195,7 @@ function createRouter() {
     addRoute,
     addRoutes,
     addObjectRoutesByName,
+    addObjectSubroutesByName,
     removeRoute,
     removeAllRoutes,
     navigate,
