@@ -12,7 +12,7 @@ export function getFirstPathStar(path: string) {
 }
 
 export function toRouterName(name: string) {
-  return name.replace(' ', '_')
+  return name.replace(/ /g, '_')
 }
 
 export function removeTheStar(path: string) {
