@@ -1,6 +1,6 @@
 {
   "name": "kbin-router",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "a react router",
   "main": "build/index.js",
   "scripts": {
