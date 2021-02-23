@@ -1,6 +1,6 @@
 import React, { Fragment, ReactNode, useEffect } from "react"
 import { stringIn, useReRender, genUpdateID } from "kbin-state"
-import { getShortName, getFirstPathStar } from "./helpers"
+import { getShortName, getFirstPathStar, toRouterName } from "./helpers"
 import { Router } from "./types"
 
 const TITLE = 'monitor'
@@ -40,7 +40,7 @@ function createRouter() {
     component: (id: string) => ReactNode
   ) {
     Object.keys(obj).forEach(id => {
-      addRoute(rootPath + obj[id].name, component(id))
+      addRoute(rootPath + toRouterName(obj[id].name), component(id))
     })
   }
 
@@ -51,7 +51,7 @@ function createRouter() {
     component: (id: string) => ReactNode
   ) {
     Object.keys(obj).forEach(id => {
-      addRoute(`${rootPath}${obj[id].name}/${subroute}`, component(id))
+      addRoute(`${rootPath}${toRouterName(obj[id].name)}/${subroute}`, component(id))
     })
   }
 
