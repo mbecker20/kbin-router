@@ -1,5 +1,7 @@
 export { default as createRouter } from './router'
 export {
   getFirstPathStar,
-  getShortName
+  getShortName,
+  toRouterName,
+  removeTheStar
 } from './helpers'
