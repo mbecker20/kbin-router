@@ -3,9 +3,7 @@ import { stringIn, useReRender, genUpdateID } from "kbin-state"
 import { getShortName, getFirstPathStar, toRouterName } from "./helpers"
 import { Router } from "./types"
 
-const TITLE = 'monitor'
-
-function createRouter() {
+function createRouter(title: string) {
   const router: Router = {
     path: '/',
     routes: {}
@@ -69,13 +67,13 @@ function createRouter() {
       window.dispatchEvent(new Event('route_update'))
       const id = genUpdateID(0)
       const addTitle = getShortName(router.path)
-      const title = addTitle.length > 1 ? `${TITLE} - ${addTitle}` : TITLE
+      const _title = addTitle.length > 1 ? `${title} - ${addTitle}` : title
       window.history.pushState(
         { id },
-        title,
+        _title,
         router.path
       )
-      document.title = title
+      document.title = _title
     }
   }
 
@@ -91,13 +89,13 @@ function createRouter() {
     window.dispatchEvent(new Event('route_update'))
     const id = genUpdateID(0)
     const addTitle = getShortName(router.path)
-    const title = addTitle.length > 1 ? `${TITLE} - ${addTitle}` : TITLE
+    const _title = addTitle.length > 1 ? `${title} - ${addTitle}` : title
     window.history.replaceState(
       { id },
-      title,
+      _title,
       router.path
     )
-    document.title = title
+    document.title = _title
   }
 
   function softNavigate(path: string) {
@@ -112,13 +110,13 @@ function createRouter() {
       }
       const id = genUpdateID(0)
       const addTitle = getShortName(router.path)
-      const title = addTitle.length > 0 ? `${TITLE} - ${addTitle}` : TITLE
+      const _title = addTitle.length > 0 ? `${title} - ${addTitle}` : title
       window.history.pushState(
         { id },
-        title,
+        _title,
         router.path
       )
-      document.title = title
+      document.title = _title
     }
   }
 
@@ -134,13 +132,13 @@ function createRouter() {
     window.dispatchEvent(new Event('route_update'))
     const id = genUpdateID(0)
     const addTitle = getShortName(router.path)
-    const title = addTitle.length > 1 ? `${TITLE} - ${addTitle}` : TITLE
+    const _title = addTitle.length > 1 ? `${title} - ${addTitle}` : title
     window.history.replaceState(
       { id },
-      title,
+      _title,
       router.path
     )
-    document.title = title
+    document.title = _title
   }
 
   function matchToRoutes(path: string) {
