@@ -14,7 +14,7 @@ function createRouter(title: string) {
     window.dispatchEvent(new Event('route_update'))
   })
 
-  function addRoute(path: string, component: ReactNode) {
+  function addRoute(path: string, component: () => ReactNode) {
     if (router.routes[path]) {
       throw new Error("route already exists");
     } else {
@@ -26,7 +26,7 @@ function createRouter(title: string) {
     delete router.routes[path]
   }
 
-  function addRoutes(routes: { [path: string]: ReactNode }) {
+  function addRoutes(routes: { [path: string]: () => ReactNode }) {
     Object.keys(routes).forEach(path => {
       addRoute(path, routes[path])
     })
@@ -38,7 +38,7 @@ function createRouter(title: string) {
     component: (id: string) => ReactNode
   ) {
     Object.keys(obj).forEach(id => {
-      addRoute(rootPath + toRouterName(obj[id].name), component(id))
+      addRoute(rootPath + toRouterName(obj[id].name), () => component(id))
     })
   }
 
@@ -49,7 +49,7 @@ function createRouter(title: string) {
     component: (id: string) => ReactNode
   ) {
     Object.keys(obj).forEach(id => {
-      addRoute(`${rootPath}${toRouterName(obj[id].name)}/${subroute}`, component(id))
+      addRoute(`${rootPath}${toRouterName(obj[id].name)}/${subroute}`, () => component(id))
     })
   }
 
@@ -182,8 +182,8 @@ function createRouter(title: string) {
     return (
       <Fragment>
         { 
-          routes[path] ? routes[path] : 
-          routes[firstPathStar] ? routes[firstPathStar] : null
+          routes[path] ? routes[path]() : 
+          routes[firstPathStar] ? routes[firstPathStar]() : null
         }
       </Fragment>
     )
