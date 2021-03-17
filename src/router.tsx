@@ -66,7 +66,7 @@ function createRouter(title: string) {
       }
       window.dispatchEvent(new Event('route_update'))
       const id = genUpdateID(0)
-      const addTitle = getShortName(router.path)
+      const addTitle = getShortName(router.path).replaceAll('_', ' ')
       const _title = addTitle.length > 1 ? `${title} - ${addTitle}` : title
       window.history.pushState(
         { id },
@@ -88,7 +88,7 @@ function createRouter(title: string) {
     }
     window.dispatchEvent(new Event('route_update'))
     const id = genUpdateID(0)
-    const addTitle = getShortName(router.path)
+    const addTitle = getShortName(router.path).replaceAll('_', ' ')
     const _title = addTitle.length > 1 ? `${title} - ${addTitle}` : title
     window.history.replaceState(
       { id },
@@ -109,7 +109,7 @@ function createRouter(title: string) {
         router.path = '/'
       }
       const id = genUpdateID(0)
-      const addTitle = getShortName(router.path)
+      const addTitle = getShortName(router.path).replaceAll('_', ' ')
       const _title = addTitle.length > 0 ? `${title} - ${addTitle}` : title
       window.history.pushState(
         { id },
@@ -131,7 +131,7 @@ function createRouter(title: string) {
     }
     window.dispatchEvent(new Event('route_update'))
     const id = genUpdateID(0)
-    const addTitle = getShortName(router.path)
+    const addTitle = getShortName(router.path).replaceAll('_', ' ')
     const _title = addTitle.length > 1 ? `${title} - ${addTitle}` : title
     window.history.replaceState(
       { id },
