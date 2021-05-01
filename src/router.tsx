@@ -183,7 +183,7 @@ function createRouter(title: string) {
     return (
       <Fragment>
         { 
-          routes[path] ? routes[path]() : 
+          routes[path] ? routes[path](last) : 
           routes[firstPathStar] ? routes[firstPathStar](last) : null
         }
       </Fragment>
