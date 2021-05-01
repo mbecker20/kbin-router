@@ -139,6 +139,11 @@ function createRouter(title: string) {
 
   function initialize() {
     router.path = matchToRoutes(window.location.pathname)
+    return {
+      path: router.path,
+      firstPathStar: getFirstPathStar(router.path),
+      last: getShortName(router.path)
+    }
   }
 
   function removeAllRoutes() {
