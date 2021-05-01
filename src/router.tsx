@@ -58,9 +58,7 @@ function createRouter(title: string) {
       if (router.routes[path]) {
         router.path = path
       } else if (router.routes[getFirstPathStar(path)]) {
-        router.path = getFirstPathStar(path)
-        const end = router.path.length > 2 ? router.path.length - 2 : router.path.length - 1
-        router.path = router.path.slice(0, end)
+        // nothing
       } else {
         router.path = '/'
       }
