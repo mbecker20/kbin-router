@@ -74,11 +74,8 @@ function createRouter(title: string) {
   }
 
   function replaceNavigate(path: string) {
-    if (router.routes[path]) {
+    if (router.routes[path] || router.routes[getFirstPathStar(path)]) {
       router.path = path
-    } else if (router.routes[getFirstPathStar(path)]) {
-      router.path = getFirstPathStar(path)
-      router.path = router.path.slice(0, router.path.length - 2)
     } else {
       router.path = '/'
     }
@@ -96,11 +93,8 @@ function createRouter(title: string) {
 
   function softNavigate(path: string) {
     if (router.path !== path) {
-      if (router.routes[path]) {
+      if (router.routes[path] || router.routes[getFirstPathStar(path)]) {
         router.path = path
-      } else if (router.routes[getFirstPathStar(path)]) {
-        router.path = getFirstPathStar(path)
-        router.path = router.path.slice(0, router.path.length - 2)
       } else {
         router.path = '/'
       }
@@ -117,11 +111,8 @@ function createRouter(title: string) {
   }
 
   function softReplaceNavigate(path: string) {
-    if (router.routes[path]) {
+    if (router.routes[path] || router.routes[getFirstPathStar(path)]) {
       router.path = path
-    } else if (router.routes[getFirstPathStar(path)]) {
-      router.path = getFirstPathStar(path)
-      router.path = router.path.slice(0, router.path.length - 2)
     } else {
       router.path = '/'
     }
@@ -148,7 +139,6 @@ function createRouter(title: string) {
 
   function initialize() {
     router.path = matchToRoutes(window.location.pathname)
-    softReplaceNavigate(router.path)
   }
 
   function removeAllRoutes() {
