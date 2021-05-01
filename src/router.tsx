@@ -179,11 +179,12 @@ function createRouter(title: string) {
     useRouter()
     const { routes, path } = router
     const firstPathStar = getFirstPathStar(path)
+    const last = getShortName(path)
     return (
       <Fragment>
         { 
           routes[path] ? routes[path]() : 
-          routes[firstPathStar] ? routes[firstPathStar]() : null
+          routes[firstPathStar] ? routes[firstPathStar](last) : null
         }
       </Fragment>
     )
