@@ -14,7 +14,7 @@ function createRouter(title: string) {
     window.dispatchEvent(new Event('route_update'))
   })
 
-  function addRoute(path: string, component: () => ReactNode) {
+  function addRoute(path: string, component: (last: string) => ReactNode) {
     if (router.routes[path]) {
       throw new Error("route already exists");
     } else {
@@ -26,7 +26,7 @@ function createRouter(title: string) {
     delete router.routes[path]
   }
 
-  function addRoutes(routes: { [path: string]: () => ReactNode }) {
+  function addRoutes(routes: { [path: string]: (last: string) => ReactNode }) {
     Object.keys(routes).forEach(path => {
       addRoute(path, routes[path])
     })
