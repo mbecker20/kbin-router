@@ -55,10 +55,8 @@ function createRouter(title: string) {
 
   function navigate(path: string) {
     if (router.path !== path) {
-      if (router.routes[path]) {
+      if (router.routes[path] || router.routes[getFirstPathStar(path)]) {
         router.path = path
-      } else if (router.routes[getFirstPathStar(path)]) {
-        // nothing
       } else {
         router.path = '/'
       }
