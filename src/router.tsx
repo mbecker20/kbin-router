@@ -166,7 +166,7 @@ function createRouter(title: string) {
     }, [])
   }
 
-  function Router() {
+  function Router({ props }: { props?: any }) {
     useRouter()
     const { routes, path } = router
     const firstPathStar = getFirstPathStar(path)
@@ -174,8 +174,8 @@ function createRouter(title: string) {
     return (
       <Fragment>
         { 
-          routes[path] ? routes[path](last) : 
-          routes[firstPathStar] ? routes[firstPathStar](last) : null
+          routes[path] ? routes[path](last, props) : 
+          routes[firstPathStar] ? routes[firstPathStar](last, props) : null
         }
       </Fragment>
     )
